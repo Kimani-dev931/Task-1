@@ -14,7 +14,7 @@ class Member {
     String mobileNumber;
     String emailAddress;
     String gender;
-    List<String> errorReasons; // New field for error reasons
+    List<String> errorReasons;
 
     public Member(String id, String name, String mobileNumber, String emailAddress, String gender) {
         this.id = id;
@@ -22,17 +22,17 @@ class Member {
         this.mobileNumber = mobileNumber;
         this.emailAddress = emailAddress;
         this.gender = gender;
-        this.errorReasons = new ArrayList<>(); // Initialize error reasons list
+        this.errorReasons = new ArrayList<>();
     }
 
-    // Add any additional validation logic as needed
+
     public boolean isValid() {
-        // Example validation: ID should contain only digits with no spaces
+
         boolean isIdValid = id.matches("\\d+");
         boolean isMobileNumberValid = mobileNumber.matches("^(?:254|\\\\\\\\+254|0)?(7(?:(?:[12][0-9])|(?:0[0-8])|(?:9[0-2]))[0-9]{6})$");
         boolean isEmailAddressValid = emailAddress.matches(".+@.+");
 
-        // Set error reasons based on validation results
+
         if (!isIdValid) {
             errorReasons.add("Invalid ID");
         }
@@ -70,7 +70,7 @@ public class ExcelProcessor {
             e.printStackTrace();
         }
 
-        // Save the workbooks to files
+
         saveWorkbookToFile(femaleWorkbook, "female_records.xlsx");
         saveWorkbookToFile(maleWorkbook, "male_records.xlsx");
         saveWorkbookToFile(invalidWorkbook, "invalid_records.xlsx");
@@ -105,7 +105,7 @@ public class ExcelProcessor {
             invalidRow.createCell(3).setCellValue(member.emailAddress);
             invalidRow.createCell(4).setCellValue(member.gender);
 
-            // Add a column for error reasons
+
             Cell errorReasonsCell = invalidRow.createCell(5);
             String errorReasons = String.join(", ", member.errorReasons);
             errorReasonsCell.setCellValue(errorReasons);
