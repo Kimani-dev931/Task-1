@@ -54,7 +54,7 @@ public class ExcelProcessor {
 
     public static void main(String[] args) {
         long startTime = System.currentTimeMillis();
-        String csvFilePath = "C:\\Users\\kim\\Downloads\\member_details.csv";
+        String csvFilePath = "member_details.csv";
 
         try (BufferedReader reader = new BufferedReader(new FileReader(csvFilePath))) {
             String line;
